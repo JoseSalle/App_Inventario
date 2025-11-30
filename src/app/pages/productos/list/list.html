@@ -1,45 +1,48 @@
 <div class="container">
-  <div class="d-flex justify-content-between align-items-center mb-4">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4 gap-3">
     <h2 class="mb-0">Productos</h2>
-    <a routerLink="/productos/crear" class="btn btn-primary shadow-sm">
+    <a routerLink="/productos/crear" class="btn btn-primary shadow-sm align-self-stretch align-self-md-auto">
       <i class="bi bi-plus-lg"></i> Nuevo producto
     </a>
   </div>
 
   <div class="card shadow-sm">
     <div class="card-body p-0">
-      <table class="table table-hover mb-0">
-        <thead class="bg-light">
-          <tr>
-            <th class="ps-4">ID</th>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            <th>Categoría</th>
-            <th>Proveedor</th>
-            <th class="text-end pe-4">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let p of productos">
-            <td class="ps-4">{{ p.id }}</td>
-            <td class="fw-medium">{{ p.nombre }}</td>
-            <td>${{ p.precio }}</td>
-            <td>
-              <span class="badge bg-success bg-opacity-10 text-success" *ngIf="p.stock > 10">{{ p.stock }}</span>
-              <span class="badge bg-warning bg-opacity-10 text-warning" *ngIf="p.stock <= 10 && p.stock > 0">{{ p.stock
-                }}</span>
-              <span class="badge bg-danger bg-opacity-10 text-danger" *ngIf="p.stock === 0">Agotado</span>
-            </td>
-            <td>{{ p.categoria }}</td>
-            <td>{{ p.proveedor }}</td>
-            <td class="text-end pe-4">
-              <a [routerLink]="['/productos/editar', p.id]" class="btn btn-sm btn-outline-primary me-2">Editar</a>
-              <button (click)="delete(p.id)" class="btn btn-sm btn-outline-danger">Eliminar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead class="bg-light">
+            <tr>
+              <th class="ps-4">ID</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Stock</th>
+              <th>Categoría</th>
+              <th>Proveedor</th>
+              <th class="text-end pe-4">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of productos">
+              <td class="ps-4">{{ p.id }}</td>
+              <td class="fw-medium">{{ p.nombre }}</td>
+              <td>${{ p.precio }}</td>
+              <td>
+                <span class="badge bg-success bg-opacity-10 text-success" *ngIf="p.stock > 10">{{ p.stock }}</span>
+                <span class="badge bg-warning bg-opacity-10 text-warning" *ngIf="p.stock <= 10 && p.stock > 0">{{
+                  p.stock
+                  }}</span>
+                <span class="badge bg-danger bg-opacity-10 text-danger" *ngIf="p.stock === 0">Agotado</span>
+              </td>
+              <td>{{ p.categoria }}</td>
+              <td>{{ p.proveedor }}</td>
+              <td class="text-end pe-4 text-nowrap">
+                <a [routerLink]="['/productos/editar', p.id]" class="btn btn-sm btn-outline-primary me-2">Editar</a>
+                <button (click)="delete(p.id)" class="btn btn-sm btn-outline-danger">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

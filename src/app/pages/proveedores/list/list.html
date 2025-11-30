@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="d-flex justify-content-between align-items-center mb-4">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4 gap-3">
     <h2 class="mb-0">Proveedores</h2>
-    <a routerLink="/proveedores/crear" class="btn btn-primary shadow-sm">
+    <a routerLink="/proveedores/crear" class="btn btn-primary shadow-sm align-self-stretch align-self-md-auto">
       <i class="bi bi-plus-lg"></i> Nuevo proveedor
     </a>
   </div>
@@ -14,31 +14,33 @@
 
   <div class="card shadow-sm">
     <div class="card-body p-0">
-      <table class="table table-hover mb-0">
-        <thead class="bg-light">
-          <tr>
-            <th class="ps-4">ID</th>
-            <th>Nombre</th>
-            <th>Teléfono</th>
-            <th>Correo</th>
-            <th>Dirección</th>
-            <th class="text-end pe-4">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let p of proveedores">
-            <td class="ps-4">{{ p.id }}</td>
-            <td class="fw-medium">{{ p.nombre }}</td>
-            <td>{{ p.telefono }}</td>
-            <td>{{ p.correo }}</td>
-            <td>{{ p.direccion }}</td>
-            <td class="text-end pe-4">
-              <a [routerLink]="['/proveedores/editar', p.id]" class="btn btn-sm btn-outline-primary me-2">Editar</a>
-              <button (click)="delete(p.id)" class="btn btn-sm btn-outline-danger">Eliminar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead class="bg-light">
+            <tr>
+              <th class="ps-4">ID</th>
+              <th>Nombre</th>
+              <th>Teléfono</th>
+              <th>Correo</th>
+              <th>Dirección</th>
+              <th class="text-end pe-4">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of proveedores">
+              <td class="ps-4">{{ p.id }}</td>
+              <td class="fw-medium">{{ p.nombre }}</td>
+              <td>{{ p.telefono }}</td>
+              <td>{{ p.correo }}</td>
+              <td>{{ p.direccion }}</td>
+              <td class="text-end pe-4 text-nowrap">
+                <a [routerLink]="['/proveedores/editar', p.id]" class="btn btn-sm btn-outline-primary me-2">Editar</a>
+                <button (click)="delete(p.id)" class="btn btn-sm btn-outline-danger">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
