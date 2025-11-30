@@ -1,59 +1,52 @@
-# Inventario
+# Inventario Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.2.
+Este proyecto es la interfaz de usuario para el sistema de gestión de inventario. Está construido con [Angular](https://angular.io/) versión 20.3.0 y utiliza [Bootstrap](https://getbootstrap.com/) para el diseño.
 
-## Development server
+## Características
 
-To start a local development server, run:
+-   **Gestión de Categorías**: Crear, listar, editar y eliminar categorías de productos.
+-   **Gestión de Productos**: Administrar el inventario de productos con sus precios y stock.
+-   **Gestión de Proveedores**: Mantener un registro de proveedores con su información de contacto.
+-   **Diseño Responsivo**: Interfaz adaptable a diferentes dispositivos gracias a Bootstrap.
 
-```bash
-ng serve
-```
+## Requisitos Previos
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Asegúrate de tener instalado:
 
-## Code scaffolding
+-   [Node.js](https://nodejs.org/) (versión compatible con Angular 20)
+-   [Angular CLI](https://github.com/angular/angular-cli) (`npm install -g @angular/cli`)
+-   El backend de la aplicación ejecutándose en `http://localhost:3000`.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Instalación
 
-```bash
-ng generate component component-name
-```
+1.  Clona el repositorio o navega a la carpeta del proyecto:
+    ```bash
+    cd FrontEnd/Inventario
+    ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+2.  Instala las dependencias:
+    ```bash
+    npm install
+    ```
 
-```bash
-ng generate --help
-```
+## Ejecución
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Para iniciar el servidor de desarrollo:
 
 ```bash
-ng test
+npm start
 ```
 
-## Running end-to-end tests
+La aplicación estará disponible en `http://localhost:4200/`. La aplicación se recargará automáticamente si cambias algún archivo fuente.
 
-For end-to-end (e2e) testing, run:
+## Estructura del Proyecto
 
-```bash
-ng e2e
-```
+-   `src/app/pages`: Contiene los componentes principales para cada módulo (Categorías, Productos, Proveedores).
+-   `src/app/services`: Servicios para la comunicación con la API del backend.
+-   `src/app/components`: Componentes reutilizables de la interfaz.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Scripts Disponibles
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+-   `npm start`: Inicia el servidor de desarrollo en el puerto 4200.
+-   `npm run build`: Compila el proyecto para producción.
+-   `npm test`: Ejecuta las pruebas unitarias con Karma.
