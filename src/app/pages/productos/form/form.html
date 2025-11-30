@@ -1,0 +1,58 @@
+<div class="card shadow p-4">
+
+  <h3 class="mb-4">Nuevo Producto</h3>
+
+  <form [formGroup]="form" (ngSubmit)="guardar()">
+
+    <!-- NOMBRE -->
+    <div class="mb-3">
+      <label class="form-label">Nombre</label>
+      <input type="text" class="form-control" formControlName="nombre">
+      <div class="text-danger" *ngIf="form.get('nombre')?.touched && form.get('nombre')?.invalid">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <!-- PRECIO -->
+    <div class="mb-3">
+      <label class="form-label">Precio</label>
+      <input type="number" class="form-control" formControlName="precio">
+      <div class="text-danger" *ngIf="form.get('precio')?.touched && form.get('precio')?.invalid">
+        Ingrese un precio válido.
+      </div>
+    </div>
+
+    <!-- STOCK -->
+    <div class="mb-3">
+      <label class="form-label">Stock</label>
+      <input type="number" class="form-control" formControlName="stock">
+      <div class="text-danger" *ngIf="form.get('stock')?.touched && form.get('stock')?.invalid">
+        Ingrese un stock válido.
+      </div>
+    </div>
+
+    <!-- CATEGORIA -->
+    <div class="mb-3">
+      <label class="form-label">Categoría</label>
+      <select class="form-select" formControlName="categoria">
+        <option value="">Seleccione una categoría</option>
+        <option *ngFor="let c of categorias" [value]="c.id">{{ c.nombre }}</option>
+      </select>
+    </div>
+
+    <!-- PROVEEDOR -->
+    <div class="mb-3">
+      <label class="form-label">Proveedor</label>
+      <select class="form-select" formControlName="proveedor">
+        <option value="">Seleccione un proveedor</option>
+        <option *ngFor="let p of proveedores" [value]="p.id">{{ p.nombre }}</option>
+      </select>
+    </div>
+
+    <!-- BOTÓN -->
+    <button class="btn btn-primary w-100" type="submit">
+      Guardar producto
+    </button>
+
+  </form>
+</div>

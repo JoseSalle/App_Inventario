@@ -1,0 +1,31 @@
+<div class="card shadow p-4">
+
+  <h3 class="mb-4">Nueva Categoría</h3>
+
+  <form [formGroup]="form" (ngSubmit)="guardar()">
+
+    <!-- Nombre -->
+    <div class="mb-3">
+      <label class="form-label">Nombre</label>
+      <input type="text" class="form-control" formControlName="nombre">
+      <div class="text-danger" *ngIf="form.get('nombre')?.touched && form.get('nombre')?.invalid">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <!-- Descripción -->
+    <div class="mb-3">
+      <label class="form-label">Descripción</label>
+      <textarea class="form-control" rows="3" formControlName="descripcion"></textarea>
+      <div class="text-danger" *ngIf="form.get('descripcion')?.touched && form.get('descripcion')?.invalid">
+        La descripción es obligatoria.
+      </div>
+    </div>
+
+    <!-- Botón -->
+    <button class="btn btn-primary w-100" type="submit">
+      Guardar categoría
+    </button>
+
+  </form>
+</div>
