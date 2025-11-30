@@ -1,49 +1,51 @@
-<div class="card shadow p-4">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
+          <h3 class="mb-0">{{ isEditMode ? 'Editar Proveedor' : 'Nuevo Proveedor' }}</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="guardar()">
 
-  <h3 class="mb-4">Nuevo Proveedor</h3>
+            <div class="mb-3">
+              <label for="nombre" class="form-label fw-medium">Nombre</label>
+              <input type="text" id="nombre" class="form-control" formControlName="nombre"
+                [class.is-invalid]="form.get('nombre')?.invalid && form.get('nombre')?.touched">
+              <div class="invalid-feedback">El nombre es requerido.</div>
+            </div>
 
-  <form [formGroup]="form" (ngSubmit)="guardar()">
+            <div class="mb-3">
+              <label for="telefono" class="form-label fw-medium">Teléfono</label>
+              <input type="text" id="telefono" class="form-control" formControlName="telefono"
+                [class.is-invalid]="form.get('telefono')?.invalid && form.get('telefono')?.touched">
+              <div class="invalid-feedback">El teléfono es requerido.</div>
+            </div>
 
-    <!-- Nombre -->
-    <div class="mb-3">
-      <label class="form-label">Nombre</label>
-      <input type="text" class="form-control" formControlName="nombre">
-      <div class="text-danger" *ngIf="form.get('nombre')?.touched && form.get('nombre')?.invalid">
-        El nombre es obligatorio.
+            <div class="mb-3">
+              <label for="correo" class="form-label fw-medium">Correo</label>
+              <input type="email" id="correo" class="form-control" formControlName="correo"
+                [class.is-invalid]="form.get('correo')?.invalid && form.get('correo')?.touched">
+              <div class="invalid-feedback">Correo inválido.</div>
+            </div>
+
+            <div class="mb-4">
+              <label for="direccion" class="form-label fw-medium">Dirección</label>
+              <textarea id="direccion" class="form-control" formControlName="direccion" rows="2"
+                [class.is-invalid]="form.get('direccion')?.invalid && form.get('direccion')?.touched"></textarea>
+              <div class="invalid-feedback">La dirección es requerida.</div>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary btn-lg">
+                {{ isEditMode ? 'Actualizar' : 'Guardar' }}
+              </button>
+              <a routerLink="/proveedores" class="btn btn-light">Cancelar</a>
+            </div>
+
+          </form>
+        </div>
       </div>
     </div>
-
-    <!-- Teléfono -->
-    <div class="mb-3">
-      <label class="form-label">Teléfono</label>
-      <input type="text" class="form-control" formControlName="telefono">
-      <div class="text-danger" *ngIf="form.get('telefono')?.touched && form.get('telefono')?.invalid">
-        El teléfono es obligatorio.
-      </div>
-    </div>
-
-    <!-- Correo -->
-    <div class="mb-3">
-      <label class="form-label">Correo</label>
-      <input type="email" class="form-control" formControlName="correo">
-      <div class="text-danger" *ngIf="form.get('correo')?.touched && form.get('correo')?.invalid">
-        Ingrese un correo electrónico válido.
-      </div>
-    </div>
-
-    <!-- Dirección -->
-    <div class="mb-3">
-      <label class="form-label">Dirección</label>
-      <textarea class="form-control" rows="2" formControlName="direccion"></textarea>
-      <div class="text-danger" *ngIf="form.get('direccion')?.touched && form.get('direccion')?.invalid">
-        La dirección es obligatoria.
-      </div>
-    </div>
-
-    <!-- Botón -->
-    <button class="btn btn-primary w-100" type="submit">
-      Guardar proveedor
-    </button>
-
-  </form>
+  </div>
 </div>

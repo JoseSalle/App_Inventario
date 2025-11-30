@@ -1,38 +1,46 @@
-import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Proveedores } from '../../../services/proveedores';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [NgFor, RouterLink],
+  imports: [NgFor, NgIf, RouterLink],
   templateUrl: './list.html',
   styleUrl: './list.scss',
 })
-export class List {
+export class List implements OnInit {
 
-  proveedores = [
-    {
-      id: 1,
-      nombre: 'TechSupplier',
-      telefono: '55-1234-5678',
-      correo: 'contacto@techsupplier.com',
-      direccion: 'Av. Reforma 123, CDMX'
-    },
-    {
-      id: 2,
-      nombre: 'ProTech',
-      telefono: '55-9876-5432',
-      correo: 'ventas@protech.com',
-      direccion: 'Calle Hidalgo 45, Guadalajara'
-    },
-    {
-      id: 3,
-      nombre: 'KeyMaster',
-      telefono: '55-5678-1234',
-      correo: 'info@keymaster.com',
-      direccion: 'Av. Juárez 89, Monterrey'
-    }
-  ];
+  proveedores: any[] = [];
+  errorMessage: string | null = null;
 
+  constructor(private proveedoresService: Proveedores) { }
+
+  ngOnInit(): void {
+    this.loadProveedores();
+  }
+
+  loadProveedores() {
+    this.proveedoresService.getAll().subscribe(data => {
+      this.proveedores = data;
+    });
+  }
+
+  delete(id: number) {
+    this.errorMessage = null;
+    this.proveedoresService.delete(id).subscribe({
+      next: () => {
+        this.loadProveedores();
+      },
+      error: (err) => {
+        if (err.status === 400) {
+          this.errorMessage = err.error.error;
+        } else {
+          this.errorMessage = 'Ocurrió un error al intentar eliminar el proveedor.';
+        }
+        setTimeout(() => this.errorMessage = null, 5000);
+      }
+    });
+  }
 }

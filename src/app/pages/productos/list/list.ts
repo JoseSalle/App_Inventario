@@ -1,20 +1,34 @@
-import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-
+import { Productos } from '../../../services/productos';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [NgFor, RouterLink],
+  imports: [RouterLink, NgFor, NgIf],
   templateUrl: './list.html',
   styleUrl: './list.scss',
 })
-export class List {
+export class List implements OnInit {
 
-  productos = [
-    { id: 1, nombre: 'Laptop', precio: 15000, stock: 10, categoria: 'Electrónica', proveedor: 'TechSupplier' },
-    { id: 2, nombre: 'Mouse', precio: 250, stock: 50, categoria: 'Accesorios', proveedor: 'ProTech' },
-    { id: 3, nombre: 'Teclado', precio: 500, stock: 20, categoria: 'Accesorios', proveedor: 'KeyMaster' }
-  ];
+  productos: any[] = [];
+
+  constructor(private productosService: Productos) { }
+
+  ngOnInit(): void {
+    this.loadProductos();
+  }
+
+  loadProductos() {
+    this.productosService.getAll().subscribe(data => {
+      this.productos = data;
+    });
+  }
+
+  delete(id: number) {
+    this.productosService.delete(id).subscribe(() => {
+      this.loadProductos();
+    });
+  }
 }

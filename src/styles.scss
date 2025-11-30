@@ -1,1 +1,117 @@
 @import url('bootstrap/dist/css/bootstrap.min.css');
+
+/* Modern Color Palette */
+:root {
+    --primary-color: #2563eb;
+    /* Royal Blue */
+    --primary-hover: #1d4ed8;
+    --secondary-color: #64748b;
+    /* Slate */
+    --accent-color: #0ea5e9;
+    /* Sky Blue */
+    --background-color: #f8fafc;
+    /* Very Light Blue/Grey */
+    --surface-color: #ffffff;
+    --text-primary: #1e293b;
+    /* Slate 800 */
+    --text-secondary: #475569;
+    /* Slate 600 */
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --border-radius: 12px;
+    --box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-primary);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+/* Card Styling */
+.card {
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+}
+
+/* Button Styling */
+.btn {
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.625rem 1.25rem;
+    transition: all 0.2s;
+
+    &-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+
+        &:hover {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+    }
+}
+
+/* Table Styling */
+.table {
+    --bs-table-bg: transparent;
+
+    thead {
+        th {
+            background-color: var(--surface-color);
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid #e2e8f0;
+            padding: 1rem;
+        }
+    }
+
+    tbody {
+        tr {
+            background-color: var(--surface-color);
+            transition: background-color 0.2s;
+
+            &:hover {
+                background-color: #f1f5f9;
+            }
+
+            td {
+                padding: 1rem;
+                vertical-align: middle;
+                border-bottom: 1px solid #e2e8f0;
+                color: var(--text-secondary);
+            }
+        }
+    }
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}

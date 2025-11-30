@@ -22,13 +22,16 @@ export const routes: Routes = [
 
   { path: 'productos', component: ProductsList },
   { path: 'productos/crear', component: ProductsForm },
+  { path: 'productos/editar/:id', component: ProductsForm },
 
   { path: 'categorias', component: CategoriesList },
   { path: 'categorias/crear', component: CategoriesForm },
+  { path: 'categorias/editar/:id', component: CategoriesForm },
 
   { path: 'proveedores', component: SuppliersList },
   { path: 'proveedores/crear', component: SuppliersForm },
+  { path: 'proveedores/editar/:id', component: SuppliersForm },
 
-    // OPCIONAL: Cualquier ruta desconocida → Home
+  // OPCIONAL: Cualquier ruta desconocida → Home
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

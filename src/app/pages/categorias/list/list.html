@@ -1,22 +1,40 @@
-<div class="d-flex justify-content-between align-items-center mb-3">
-  <h2>Categorías</h2>
-  <a routerLink="/categorias/crear" class="btn btn-primary">+ Nueva categoría</a>
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-0">Categorías</h2>
+    <a routerLink="/categorias/crear" class="btn btn-primary shadow-sm">
+      <i class="bi bi-plus-lg"></i> Nueva categoría
+    </a>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+    {{ errorMessage }}
+    <button type="button" class="btn-close" (click)="errorMessage = null" aria-label="Close"></button>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-body p-0">
+      <table class="table table-hover mb-0">
+        <thead class="bg-light">
+          <tr>
+            <th class="ps-4">ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th class="text-end pe-4">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of categorias">
+            <td class="ps-4">{{ c.id }}</td>
+            <td class="fw-medium">{{ c.nombre }}</td>
+            <td>{{ c.descripcion }}</td>
+            <td class="text-end pe-4">
+              <a [routerLink]="['/categorias/editar', c.id]" class="btn btn-sm btn-outline-primary me-2">Editar</a>
+              <button (click)="delete(c.id)" class="btn btn-sm btn-outline-danger">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-
-<table class="table table-striped table-hover">
-  <thead class="table-dark">
-    <tr>
-      <th>ID</th>
-      <th>Nombre</th>
-      <th>Descripción</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr *ngFor="let c of categorias">
-      <td>{{ c.id }}</td>
-      <td>{{ c.nombre }}</td>
-      <td>{{ c.descripcion }}</td>
-    </tr>
-  </tbody>
-</table>

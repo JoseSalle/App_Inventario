@@ -1,31 +1,37 @@
-<div class="card shadow p-4">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
+          <h3 class="mb-0">{{ isEditMode ? 'Editar Categoría' : 'Nueva Categoría' }}</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="guardar()">
 
-  <h3 class="mb-4">Nueva Categoría</h3>
+            <div class="mb-3">
+              <label for="nombre" class="form-label fw-medium">Nombre</label>
+              <input type="text" id="nombre" class="form-control" formControlName="nombre"
+                [class.is-invalid]="form.get('nombre')?.invalid && form.get('nombre')?.touched">
+              <div class="invalid-feedback">El nombre es requerido.</div>
+            </div>
 
-  <form [formGroup]="form" (ngSubmit)="guardar()">
+            <div class="mb-4">
+              <label for="descripcion" class="form-label fw-medium">Descripción</label>
+              <textarea id="descripcion" class="form-control" formControlName="descripcion" rows="3"
+                [class.is-invalid]="form.get('descripcion')?.invalid && form.get('descripcion')?.touched"></textarea>
+              <div class="invalid-feedback">La descripción es requerida.</div>
+            </div>
 
-    <!-- Nombre -->
-    <div class="mb-3">
-      <label class="form-label">Nombre</label>
-      <input type="text" class="form-control" formControlName="nombre">
-      <div class="text-danger" *ngIf="form.get('nombre')?.touched && form.get('nombre')?.invalid">
-        El nombre es obligatorio.
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary btn-lg">
+                {{ isEditMode ? 'Actualizar' : 'Guardar' }}
+              </button>
+              <a routerLink="/categorias" class="btn btn-light">Cancelar</a>
+            </div>
+
+          </form>
+        </div>
       </div>
     </div>
-
-    <!-- Descripción -->
-    <div class="mb-3">
-      <label class="form-label">Descripción</label>
-      <textarea class="form-control" rows="3" formControlName="descripcion"></textarea>
-      <div class="text-danger" *ngIf="form.get('descripcion')?.touched && form.get('descripcion')?.invalid">
-        La descripción es obligatoria.
-      </div>
-    </div>
-
-    <!-- Botón -->
-    <button class="btn btn-primary w-100" type="submit">
-      Guardar categoría
-    </button>
-
-  </form>
+  </div>
 </div>
