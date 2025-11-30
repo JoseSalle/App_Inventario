@@ -48,5 +48,4 @@ La aplicación estará disponible en `http://localhost:4200/`. La aplicación se
 ## Scripts Disponibles
 
 -   `npm start`: Inicia el servidor de desarrollo en el puerto 4200.
--   `npm run build`: Compila el proyecto para producción.
 -   `npm test`: Ejecuta las pruebas unitarias con Karma.
